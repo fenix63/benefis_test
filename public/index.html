@@ -9,11 +9,39 @@
     <script src="js/jquery-3.1.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/jquery.maskedinput.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.fancybox.js"></script>
     <script src="js/proverka.js"></script>
     <script>
-      $(function(){
+      $(document).ready(function(){
+          //Обработка клика по кнопке "Забронировать"
+          //- $('#mymodal').on('click', function(){
+          //-     if(  $("input[name='phone']").val()!="" &&  $("input[name='name']").val()!="" )
+          //-     {
+          //-         $(this).fancybox();
+          //-     }
+          //-     else
+          //-     {
+          //-         alert('Не все поля заполнены!');
+          //-     }
+          //- });
       
+          $('#mymodal').click(function(){
+              if(  $("input[name='phone']").val()!="" &&  $("input[name='name']").val()!="" )
+              {
+                  $(this).fancybox();
+              }
+              else
+              {
+                  alert('Не все поля заполнены!');
+              }
+          });
+      });
+      
+      
+      $(function(){
+      $("input[name=phone]").mask("+7 (999) 999-99-99");
+      
+      //Если в поле содержится цифра - о офищаем поле
       $('input[name=name]').bind('keyup input', function(){
           if(isTextOnly($(this).val()))
               {
@@ -22,54 +50,22 @@
           
       });
       
+      //Меняем высоту формы в зависимости от размеров окна
       if ($(window).width() < '768')
           {
              $('form').css({"height":"610px"});
           }
       
-      
-      var pattern = "[A-Za-z]|[А-Яа-я]{1,}";
-        $("input[name=phone]").mask("+7 (999) 999-99-99");
-        //-$("input[name=name]").mask("aaaa",{placeholder: ""});
-      
-      
-          $('#my-modal').on('click', function(){
-              if(  $("input[name=phone]").val()  !=""  && $("input[name=name]").val() !="" ){
-                  $('#my-modal').fancybox({
-                      'transitionOut' : 'fade'
-                  });
-              }
-              else
-              {
-                  alert('Не все поля заполнены!');
-              }
-          });
-              
-      
-      
-      });
-      
-      
-       $(window).resize(function() {
           
-          /*
-          if ($(window).width() >= '992' && $(window).width() <= '1200')
-              {
-                 $('form').css({"height":"600px"});
-              }
+      });
+      $(window).resize(function()
+      {
       
-          if ($(window).width() >= '768' && $(window).width() <= '992')
-              {
-                 $('form').css({"height":"670px"});
-              }
-          */
           if ($(window).width() < '768')
               {
                  $('form').css({"height":"610px"});
               }
-              
-      
-          });
+      });
       
       
     </script>
@@ -86,7 +82,7 @@
       </div>
       <div class="row">
         <div class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-11 col-xs-offset-1">
-          <form>
+          <form action="javascript:void(null);">
             <div class="row form-inner">
               <h3><span>4000 руб. - </span>при оплате на кино-курсе</h3>
               <h1><span>1 800  </span>руб.</h1>
@@ -98,9 +94,9 @@
               </h4>
               <div class="bron">Забронируй место <span>прямо сейчас</span></div>
               <div class="line"><img src="images/line.png" alt=""/></div>
-              <input type="text" name="name" placeholder="Имя" value="" maxlength="15" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0"/>
-              <input type="text" name="phone" placeholder="+7 (___) ___-__-__" value="" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0"/>
-              <input type="submit" name="send" value="Забронировать" id="my-modal" href="#hidden" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0 my-modal"/>
+              <input type="text" name="name" placeholder="Имя" maxlength="15" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0"/>
+              <input type="text" name="phone" placeholder="+7 (___) ___-__-__" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0"/>
+              <input type="submit" name="send" value="Забронировать" id="mymodal" href="#hidden" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0"/>
             </div>
           </form>
         </div>
