@@ -4,13 +4,20 @@
 @font-face
     font-family: Proxima_Nova_Regular
     src: url(../fonts/Proxima_Nova_Regular.otf)
+@font-face
+    font-family: Proxima_Nova_Regular_Italic
+    src: url(../fonts/Proxima_Nova_Regular_Italic.otf)
 
-
+html
+    overwlow-x: hidden
 
 body
-    background: url(../images/bg.png) no-repeat
+    background: url(../images/bg2.png) no-repeat
+    background-position-x: center
     -webkit-background-size: cover
     background-size: cover
+
+
 
     .master-class
         margin-top: 200px
@@ -22,7 +29,7 @@ body
     form
         border: 2px dashed #000
         background: rgba(255,255,255,0.9)
-        height: 570px
+        height: 540px
         transform: rotate(-2deg)
         margin-top: 50px
         .form-inner
@@ -65,20 +72,34 @@ body
                 font-size: 24px
                 float: left
                 span
-                    text-decoration: underline
+                    text-decoration: none
+                    border-bottom: 3px solid #000
+            .line
+                height: 10px
+                position: relative
+                top: 49px
+                right: 13px
             input
+                clear: both
                 margin-top: 30px
                 float: left
                 border: 1px solid #000
                 height: 40px
                 box-shadow: 0px 0px 5px rgba(159,157,161,1)
-            button
+                font-family: Proxima_Nova_Regular_Italic
+                font-size: 18px
+            
+                text-align: center
+
+            button, input[type="submit"], a
                 float: left
                 margin-top: 30px
-                float: left
                 border: none
-                height: 50px
+                height: 80px
                 font-family: Proxima_Nova_Bold
                 font-size: 24px
                 color: #fff
                 background: #00c481
+    #hidden
+        display: none
+        color: #000
