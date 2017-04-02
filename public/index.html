@@ -10,15 +10,27 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/jquery.maskedinput.js"></script>
     <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/proverka.js"></script>
     <script>
       $(function(){
+      
+      $('input[name=name]').bind('keyup input', function(){
+          if(isTextOnly($(this).val()))
+              {
+                  $(this).val('');
+              }
+          
+      });
       
       if ($(window).width() < '768')
           {
              $('form').css({"height":"610px"});
           }
+      
+      
+      var pattern = "[A-Za-z]|[А-Яа-я]{1,}";
         $("input[name=phone]").mask("+7 (999) 999-99-99");
-        $("input[name=name]").mask("aaaa",{placeholder: ""});
+        //-$("input[name=name]").mask("aaaa",{placeholder: ""});
       
       
           $('#my-modal').on('click', function(){
@@ -74,7 +86,7 @@
       </div>
       <div class="row">
         <div class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-11 col-xs-offset-1">
-          <form action="javascript:void(null);">
+          <form>
             <div class="row form-inner">
               <h3><span>4000 руб. - </span>при оплате на кино-курсе</h3>
               <h1><span>1 800  </span>руб.</h1>
@@ -86,7 +98,7 @@
               </h4>
               <div class="bron">Забронируй место <span>прямо сейчас</span></div>
               <div class="line"><img src="images/line.png" alt=""/></div>
-              <input type="text" name="name" placeholder="Имя" value="" maxlength="20" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0"/>
+              <input type="text" name="name" placeholder="Имя" value="" maxlength="15" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0"/>
               <input type="text" name="phone" placeholder="+7 (___) ___-__-__" value="" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0"/>
               <input type="submit" name="send" value="Забронировать" id="my-modal" href="#hidden" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0 my-modal"/>
             </div>

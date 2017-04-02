@@ -10,17 +10,29 @@ html
         script(src="js/bootstrap.js")
         script(src="js/jquery.maskedinput.js")
         script(src="js/jquery.fancybox.min.js")
-
+        script(src="js/proverka.js")
 
         script.
+             
             $(function(){
 
+            $('input[name=name]').bind('keyup input', function(){
+                if(isTextOnly($(this).val()))
+                    {
+                        $(this).val('');
+                    }
+                
+            });
+            
             if ($(window).width() < '768')
                 {
                    $('form').css({"height":"610px"});
                 }
+
+
+            var pattern = "[A-Za-z]|[А-Яа-я]{1,}";
               $("input[name=phone]").mask("+7 (999) 999-99-99");
-              $("input[name=name]").mask("aaaa",{placeholder: ""});
+              //-$("input[name=name]").mask("aaaa",{placeholder: ""});
 
 
                 $('#my-modal').on('click', function(){
@@ -71,7 +83,7 @@ html
                         |18 декабря 2016
             .row
                 .col-lg-5.col-lg-offset-2.col-md-5.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-11.col-xs-offset-1
-                    form(action="javascript:void(null);")
+                    form()
                         .row.form-inner
                             h3
                                 span
@@ -95,8 +107,10 @@ html
                             .line
                                 img(src="images/line.png", alt="")
 
-                            input(type="text" name="name" placeholder="Имя" value="" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0" maxlength="20")
-                            input(type="text" name="phone" placeholder="+7 (___) ___-__-__" value="" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0")
+                            //-input(type="text" name="name" placeholder="Имя" value="" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0" maxlength="15"  onkeyup="return proverka(this);")
+                            input(type="text" name="name" placeholder="Имя" value="" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0" maxlength="15")
+
+                            input(type="text" name="phone" placeholder="+7 (___) ___-__-__" value="" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0" )
                             //-a(href="#hidden" id="my-modal")
                                 |Забронировать
                             input(type="submit" name="send" value="Забронировать" class="col-lg-11 col-lg-offset-0 col-md-11 col-md-offset-0 col-sm-11 col-sm-offset-0 col-xs-11 col-xs-offset-0 my-modal" id="my-modal" href="#hidden")
